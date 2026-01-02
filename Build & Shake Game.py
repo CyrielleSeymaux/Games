@@ -1,16 +1,18 @@
 """
 Build & Shake (MVP)
-- Petit "jeu" de tour vibrante : masse-ressort 1 DDL/étage
-- Calcule fréquences + modes + anime le mode 1 (et montre un indicateur de torsion)
-- Interface via sliders Matplotlib (pas besoin de Tkinter/customtkinter)
+- Small vibrating tower "game": 1-DOF mass–spring model per floor
+- Computes natural frequencies and mode shapes
+- Animates the first mode shape (with a torsion indicator)
+- Interface built with Matplotlib sliders (no Tkinter / customtkinter required)
 
-Prérequis:
+Requirements:
   pip install numpy scipy matplotlib
 
-Lancement:
+Run:
   python build_and_shake.py
 """
 
+# ----------------------------- Imports ----------------------------- #
 import numpy as np
 from dataclasses import dataclass
 from scipy.linalg import eigh
@@ -31,6 +33,7 @@ class TowerParams:
     amp: float = 1.0           # amplitude d’animation
 
 
+# --------------------- Definitions / Inputs --------------------- #
 def build_MK(p: TowerParams):
     """
     Système shear building:
